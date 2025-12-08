@@ -22,7 +22,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: var(--light-bg);
     color: var(--light-text);
-    padding: 24;
+    padding: 0;
     overflow-x: hidden;
 }
 
@@ -32,7 +32,7 @@ h1, h2, h3, h4 {
 
 /* ========== DARK MODE ========== */
 .dark body {
-    background-color: var(--white);
+    background-color: var(--dark-bg);
     color: var(--dark-text);
 }
 
@@ -343,4 +343,100 @@ h1, h2, h3, h4 {
         width: 95% !important;
         margin: 1rem !important;
     }
+}
+
+/* Mobile-optimized carousel styles */
+@media (max-width: 768px) {
+    .carousel-container {
+        position: relative;
+        touch-action: pan-y; /* Allow vertical scroll but prevent horizontal */
+    }
+    
+    .carousel-slide {
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .carousel-slide.active {
+        transform: scale(1) !important;
+        opacity: 1 !important;
+    }
+    
+    .carousel-slide.inactive {
+        transform: scale(0.95) !important;
+        opacity: 0.5 !important;
+    }
+    
+    /* Larger touch targets for mobile */
+    .carousel-dot {
+        width: 6px !important;
+        height: 6px !important;
+        min-width: 20px !important;
+        min-height: 20px !important;
+        padding: 14px !important;
+        position: relative;
+    }
+    
+    .carousel-dot::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.6);
+        transition: all 0.3s ease;
+    }
+    
+    .carousel-dot.active::after {
+        background-color: #E76F51;
+        transform: scale(1.2);
+    }
+    
+    .dark .carousel-dot.active::after {
+        background-color: #E9C46A;
+    }
+    
+    /* Larger arrow buttons for mobile */
+    #prevSlide, #nextSlide {
+        width: 22px !important;
+        height: 22px !important;
+        background-color: rgba(0, 0, 0, 0.5) !important;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    #prevSlide:hover, #nextSlide:hover {
+        background-color: rgba(0, 0, 0, 0.7) !important;
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    #prevSlide i, #nextSlide i {
+        font-size: 1.2rem;
+    }
+}
+
+/* Enhanced carousel controls for better mobile UX */
+.carousel-dot {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-dot:hover {
+    transform: scale(1.1);
+}
+
+.carousel-dot:active {
+    transform: scale(0.95);
+}
+
+/* Prevent text selection on carousel */
+.carousel-container {
+    user-select: none;
+}
+
+/* Smooth swipe transitions */
+.carousel-slide {
+    will-change: transform, opacity;
 }
