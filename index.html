@@ -3,52 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>. MaryKay's Bakehouse | Artisanal Bakery</title>
-    <!-- Tailwind CSS -->
+    <title>MaryKay's Bakehouse | Artisanal Bakery</title>
+    
+    <!-- External Resources -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#E76F51',
+                        'primary-dark': '#D65A40',
+                        secondary: '#E9C46A',
+                        'secondary-dark': '#D4B152',
+                        accent: '#2A9D8F',
+                        light: '#FEF7E9',
+                        dark: '#1A1A1A',
+                        foreground: '#2D2A22',
+                        'foreground-dark': '#F5F5F5'
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif'],
+                        'display': ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="script.js">
-   <link rel="stylesheet" href="style.css">
+    
+    <!-- Local Stylesheets -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#FEF7E9] text-[#2D2A22] dark:bg-[#1A1A1A] dark:text-[#F5F5F5]">
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-[#FEF7E9]/90 dark:bg-[#1A1A1A]/90 backdrop-blur-sm shadow-sm">
+
+<body class="bg-light text-foreground dark:bg-dark dark:text-foreground-dark">
+    <!-- ========== HEADER ========== -->
+    <header class="sticky top-0 z-50 bg-light/90 dark:bg-dark/90 backdrop-blur-sm shadow-sm">
         <div class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
+                <!-- Logo -->
                 <div class="flex items-center space-x-2">
-                    <i class="fas fa-birthday-cake text-2xl text-[#E76F51] dark:text-[#E9C46A]"></i>
-                    <h1 class="text-2xl font-bold">. MaryKay's Bakehouse</h1>
+                    <i class="fas fa-birthday-cake text-2xl text-primary dark:text-secondary"></i>
+                    <h1 class="text-2xl font-bold font-display">MaryKay's Bakehouse</h1>
                 </div>
                 
+                <!-- Desktop Navigation -->
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#home" class="hover:text-[#E76F51] dark:hover:text-[#E9C46A] font-medium">Home</a>
-                    <a href="#pastries" class="hover:text-[#E76F51] dark:hover:text-[#E9C46A] font-medium">Pastries</a>
-                    <a href="#hours" class="hover:text-[#E76F51] dark:hover:text-[#E9C46A] font-medium">Hours</a>
-                    <a href="#order" class="hover:text-[#E76F51] dark:hover:text-[#E9C46A] font-medium">Order</a>
-                    <a href="#contact" class="hover:text-[#E76F51] dark:hover:text-[#E9C46A] font-medium">Contact</a>
+                    <a href="#home" class="hover:text-primary dark:hover:text-secondary font-medium">Home</a>
+                    <a href="#pastries" class="hover:text-primary dark:hover:text-secondary font-medium">Pastries</a>
+                    <a href="#hours" class="hover:text-primary dark:hover:text-secondary font-medium">Hours</a>
+                    <a href="#order" class="hover:text-primary dark:hover:text-secondary font-medium">Order</a>
+                    <a href="#contact" class="hover:text-primary dark:hover:text-secondary font-medium">Contact</a>
                 </nav>
                 
+                <!-- Header Actions -->
                 <div class="flex items-center space-x-4">
-                    <!-- Dark/Light Mode Toggle -->
-                    <button id="darkModeToggle" class="dark-mode-toggle w-12 h-6 rounded-full bg-[#2D2A22] dark:bg-[#F5F5F5] relative p-1">
-                        <div class="absolute inset-0 flex items-center justify-between px-1">
-                            <i class="fas fa-sun text-[#FEF7E9] dark:text-[#2D2A22] sun"></i>
-                            <i class="fas fa-moon text-[#FEF7E9] dark:text-[#2D2A22] moon"></i>
-                        </div>
-                        <div class="w-4 h-4 rounded-full bg-[#E76F51] dark:bg-[#E9C46A] transform translate-x-0 dark:translate-x-6 transition-transform duration-500"></div>
-                    </button>
-                    
-                    <!-- Cart Icon with badge -->
+                    <!-- Cart Icon -->
                     <div class="relative cursor-pointer" id="cartIcon">
-                        <i class="fas fa-shopping-cart text-xl hover:text-[#E76F51] dark:hover:text-[#E9C46A]"></i>
-                        <span id="cartCount" class="absolute -top-2 -right-2 bg-[#E76F51] dark:bg-[#E9C46A] text-white dark:text-[#2D2A22] text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                        <i class="fas fa-shopping-cart text-xl hover:text-primary dark:hover:text-secondary"></i>
+                        <span id="cartCount" class="absolute -top-2 -right-2 bg-primary dark:bg-secondary text-white dark:text-dark text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
                     </div>
                     
+                    <!-- Mobile Menu Button -->
                     <button id="mobileMenuBtn" class="md:hidden text-2xl">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -56,286 +75,485 @@
             </div>
             
             <!-- Mobile Menu -->
-            <div id="mobileMenu" class="hidden md:hidden mt-4 py-4 border-t border-[#E76F51]/20 dark:border-[#E9C46A]/20">
+            <div id="mobileMenu" class="hidden md:hidden mt-4 py-4 border-t border-primary/20 dark:border-secondary/20">
                 <div class="flex flex-col space-y-4">
-                    <a href="#home" class="hover:text-[#E76F51] dark:hover:text-[#E9C46A] font-medium">Home</a>
-                    <a href="#pastries" class="hover:text-[#E76F51] dark:hover:text-[#E9C46A] font-medium">Pastries</a>
-                    <a href="#hours" class="hover:text-[#E76F51] dark:hover:text-[#E9C46A] font-medium">Hours</a>
-                    <a href="#order" class="hover:text-[#E76F51] dark:hover:text-[#E9C46A] font-medium">Order</a>
-                    <a href="#contact" class="hover:text-[#E76F51] dark:hover:text-[#E9C46A] font-medium">Contact</a>
+                    <a href="#home" class="hover:text-primary dark:hover:text-secondary font-medium">Home</a>
+                    <a href="#pastries" class="hover:text-primary dark:hover:text-secondary font-medium">Pastries</a>
+                    <a href="#hours" class="hover:text-primary dark:hover:text-secondary font-medium">Hours</a>
+                    <a href="#order" class="hover:text-primary dark:hover:text-secondary font-medium">Order</a>
+                    <a href="#contact" class="hover:text-primary dark:hover:text-secondary font-medium">Contact</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- ========== MAIN CONTENT ========== -->
     <main>
-        <!-- Hero Section with Carousel -->
+        <!-- ========== HERO SECTION ========== -->
         <section id="home" class="container mx-auto px-4 py-12 md:py-20">
             <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="fade-in">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Freshly Baked <span class="text-[#E76F51] dark:text-[#E9C46A]">Delights</span> Every Day</h2>
-                    <p class="text-lg mb-8 text-[#5A534A] dark:text-[#CCCCCC]">Welcome to . MaryKay's Bakehouse, where we craft artisanal pastries with love and the finest ingredients. Experience the taste of Lagos in every bite.</p>
-                    <a href="#pastries" class="inline-block bg-[#E76F51] dark:bg-[#E9C46A] hover:bg-[#D65A40] dark:hover:bg-[#D4B152] text-white dark:text-[#2D2A22] font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                <!-- Hero Content -->
+                <div class="animate-fade-in">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 font-display">Freshly Baked <span class="text-primary dark:text-secondary">Delights</span> Every Day</h2>
+                    <p class="text-lg mb-8 text-gray-600 dark:text-gray-400">Welcome to MaryKay's Bakehouse, where we craft artisanal pastries with love and the finest ingredients. Experience the taste of Lagos in every bite.</p>
+                    <a href="#pastries" class="inline-block bg-primary dark:bg-secondary hover:bg-primary-dark dark:hover:bg-secondary-dark text-white dark:text-dark font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
                         Order Now <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
                 
                 <!-- Carousel Container -->
-                <div class="relative fade-in">
-                    <div class="carousel-container h-64 md:h-80 w-full rounded-xl overflow-hidden shadow-2xl">
-                        <!-- Carousel Slides -->
-                        <div class="carousel-slide active absolute inset-0 w-full h-full">
-                            <img src="https://images.unsplash.com/photo-1555507036-ab794f27d2e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Fresh pastries" class="w-full h-full object-cover">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                                <h3 class="text-white text-xl font-bold">Artisanal Croissants</h3>
-                                <p class="text-white/80">Buttery, flaky perfection</p>
-                            </div>
-                        </div>
-                        
-                        <div class="carousel-slide inactive absolute inset-0 w-full h-full">
-                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1089&q=80" alt="Chocolate cake" class="w-full h-full object-cover">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                                <h3 class="text-white text-xl font-bold">Decadent Chocolate Cakes</h3>
-                                <p class="text-white/80">Rich, moist, and irresistible</p>
-                            </div>
-                        </div>
-                        
-                        <div class="carousel-slide inactive absolute inset-0 w-full h-full">
-                            <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Colorful donuts" class="w-full h-full object-cover">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                                <h3 class="text-white text-xl font-bold">Gourmet Donuts</h3>
-                                <p class="text-white/80">Fluffy treats with creative glazes</p>
-                            </div>
-                        </div>
-                        
-                        <div class="carousel-slide inactive absolute inset-0 w-full h-full">
-                            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="Berry pancakes" class="w-full h-full object-cover">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                                <h3 class="text-white text-xl font-bold">Berry Pancake Stacks</h3>
-                                <p class="text-white/80">Breakfast perfection</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Carousel Navigation -->
-                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
-                        <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white" data-slide="0"></button>
-                        <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white" data-slide="1"></button>
-                        <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white" data-slide="2"></button>
-                        <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white" data-slide="3"></button>
-                    </div>
-                    
-                    <!-- Carousel Arrows -->
-                    <button id="prevSlide" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button id="nextSlide" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
+                <!-- Carousel Container -->
+<div class="relative fade-in">
+    <div class="carousel-container h-64 md:h-80 w-full rounded-xl overflow-hidden shadow-2xl relative">
+        
+        <!-- Slide 1 -->
+        <div class="carousel-slide active absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1160&q=80" 
+                 alt="Fresh pastries" 
+                 class="w-full h-full object-cover select-none"
+                 draggable="false">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                <h3 class="text-white text-xl font-bold">Artisanal Croissants</h3>
+                <p class="text-white/80">Buttery, flaky perfection</p>
+            </div>
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="carousel-slide inactive absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=1089&q=80" 
+                 alt="Chocolate cake" 
+                 class="w-full h-full object-cover select-none"
+                 draggable="false">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                <h3 class="text-white text-xl font-bold">Decadent Chocolate Cakes</h3>
+                <p class="text-white/80">Rich, moist, and irresistible</p>
+            </div>
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="carousel-slide inactive absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1160&q=80" 
+                 alt="Colorful donuts" 
+                 class="w-full h-full object-cover select-none"
+                 draggable="false">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                <h3 class="text-white text-xl font-bold">Gourmet Donuts</h3>
+                <p class="text-white/80">Fluffy treats with creative glazes</p>
+            </div>
+        </div>
+        
+        <!-- Slide 4 -->
+        <div class="carousel-slide inactive absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80" 
+                 alt="Berry pancakes" 
+                 class="w-full h-full object-cover select-none"
+                 draggable="false">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                <h3 class="text-white text-xl font-bold">Berry Pancake Stacks</h3>
+                <p class="text-white/80">Breakfast perfection</p>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Carousel Navigation -->
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 z-10">
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white" data-slide="0" aria-label="Go to slide 1"></button>
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white" data-slide="1" aria-label="Go to slide 2"></button>
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white" data-slide="2" aria-label="Go to slide 3"></button>
+        <button class="carousel-dot w-3 h-3 rounded-full bg-white/60 hover:bg-white" data-slide="3" aria-label="Go to slide 4"></button>
+    </div>
+    
+    <!-- Carousel Arrows - Updated for better mobile -->
+    <button id="prevSlide" class="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white w-10 h-10 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all duration-300 active:scale-95" aria-label="Previous slide">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <button id="nextSlide" class="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white w-10 h-10 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all duration-300 active:scale-95" aria-label="Next slide">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+</div>
             </div>
         </section>
 
-        <!-- Pastries Section (Featured) -->
-        <section id="pastries" class="bg-[#F5E6D3] dark:bg-[#2D2A22] py-16">
+        <!-- ========== PASTRIES SECTION ========== -->
+        <section id="pastries" class="py-16 bg-gradient-to-b from-white to-gray-50 dark:from-dark dark:to-gray-900">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Our <span class="text-[#E76F51] dark:text-[#E9C46A]">Signature</span> Pastries</h2>
-                
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Section Header -->
+                <div class="text-center max-w-3xl mx-auto mb-12 animate-fade-up">
+                    <span class="text-primary font-medium text-sm uppercase tracking-wider mb-3 inline-block">Our Delicious Menu</span>
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-6">
+                        Signature <span class="text-primary">Pastries</span>
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg">
+                        Handcrafted with love using the finest ingredients. Each pastry tells a story of passion and flavor.
+                    </p>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap justify-center gap-3 mb-12">
+                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-300 active bg-primary text-white" data-filter="all">
+                        All Pastries
+                    </button>
+                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-300" data-filter="breakfast">
+                        <i class="fas fa-coffee mr-2"></i> Breakfast
+                    </button>
+                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-300" data-filter="cakes">
+                        <i class="fas fa-birthday-cake mr-2"></i> Cakes
+                    </button>
+                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-300" data-filter="desserts">
+                        <i class="fas fa-ice-cream mr-2"></i> Desserts
+                    </button>
+                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-300" data-filter="snacks">
+                        <i class="fas fa-cookie-bite mr-2"></i> Snacks
+                    </button>
+                </div>
+
+                <!-- Pastry Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                     <!-- Pastry 1 -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 pastry-card" data-id="1">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Croissants" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    <div class="pastry-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 animate-fade-in" data-id="1" data-category="breakfast">
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&q=80" 
+                                 alt="Butter Croissants" 
+                                 class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                            
+                            <!-- Stock Badge -->
+                            <div class="absolute top-4 right-4 px-3 py-1.5 bg-red-500/90 backdrop-blur-sm rounded-full">
+                                <span class="text-xs font-semibold text-white flex items-center">
+                                    <i class="fas fa-fire mr-1.5"></i> Only 8 left
+                                </span>
+                            </div>
+                            
+                            <!-- Quick View Overlay -->
+                            <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <button class="quick-view-btn px-5 py-2.5 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium flex items-center" data-id="1">
+                                    <i class="fas fa-eye mr-2"></i> Quick View
+                                </button>
+                            </div>
                         </div>
+                        
                         <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Butter Croissants</h3>
-                            <p class="text-[#5A534A] dark:text-[#CCCCCC] mb-4">Flaky, buttery, and perfect with your morning coffee.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦1,200</span>
-                                <button class="add-to-cart bg-[#E76F51] dark:bg-[#E9C46A] hover:bg-[#D65A40] dark:hover:bg-[#D4B152] text-white dark:text-[#2D2A22] py-2 px-4 rounded-lg" data-id="1" data-name="Butter Croissants" data-price="1200">
-                                    <i class="fas fa-plus mr-2"></i> Add to Cart
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200">Butter Croissants</h3>
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                    <span class="text-sm font-semibold">4.8</span>
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                                Flaky, buttery layers with a golden crust. Perfect with your morning coffee.
+                            </p>
+                            
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                                <div>
+                                    <span class="text-2xl font-bold text-primary">₦1,200</span>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Per piece</p>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 hover:border-primary hover:bg-primary/10 transition-colors duration-300" onclick="updateQuantity(1, -1)">
+                                        <i class="fas fa-minus text-sm"></i>
+                                    </button>
+                                    <span id="quantity-1" class="font-semibold">1</span>
+                                    <button class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 hover:border-primary hover:bg-primary/10 transition-colors duration-300" onclick="updateQuantity(1, 1)">
+                                        <i class="fas fa-plus text-sm"></i>
+                                    </button>
+                                </div>
+                                <button class="add-to-cart bg-primary hover:bg-primary/90 text-white font-medium py-2.5 px-5 rounded-lg flex items-center transition-all duration-300 hover:scale-105 active:scale-95" 
+                                        data-id="1" 
+                                        data-name="Butter Croissants" 
+                                        data-price="1200">
+                                    <i class="fas fa-plus mr-2"></i> Add
                                 </button>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Pastry 2 -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 pastry-card" data-id="2">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1089&q=80" alt="Chocolate Cake" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    <div class="pastry-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 animate-fade-in" data-id="2" data-category="cakes">
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=1089&q=80" 
+                                 alt="Chocolate Fudge Cake" 
+                                 class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                            
+                            <div class="absolute top-4 right-4 px-3 py-1.5 bg-red-500/90 backdrop-blur-sm rounded-full">
+                                <span class="text-xs font-semibold text-white flex items-center">
+                                    <i class="fas fa-fire mr-1.5"></i> Only 3 left
+                                </span>
+                            </div>
+                            
+                            <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <button class="quick-view-btn px-5 py-2.5 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium flex items-center" data-id="2">
+                                    <i class="fas fa-eye mr-2"></i> Quick View
+                                </button>
+                            </div>
                         </div>
+                        
                         <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Chocolate Fudge Cake</h3>
-                            <p class="text-[#5A534A] dark:text-[#CCCCCC] mb-4">Rich, moist chocolate cake with decadent frosting.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦4,500</span>
-                                <button class="add-to-cart bg-[#E76F51] dark:bg-[#E9C46A] hover:bg-[#D65A40] dark:hover:bg-[#D4B152] text-white dark:text-[#2D2A22] py-2 px-4 rounded-lg" data-id="2" data-name="Chocolate Fudge Cake" data-price="4500">
-                                    <i class="fas fa-plus mr-2"></i> Add to Cart
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200">Chocolate Fudge Cake</h3>
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                    <span class="text-sm font-semibold">4.9</span>
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                                Rich, moist chocolate cake with layers of decadent fudge frosting.
+                            </p>
+                            
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                                <div>
+                                    <span class="text-2xl font-bold text-primary">₦4,500</span>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Whole cake</p>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 hover:border-primary hover:bg-primary/10 transition-colors duration-300" onclick="updateQuantity(2, -1)">
+                                        <i class="fas fa-minus text-sm"></i>
+                                    </button>
+                                    <span id="quantity-2" class="font-semibold">1</span>
+                                    <button class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 hover:border-primary hover:bg-primary/10 transition-colors duration-300" onclick="updateQuantity(2, 1)">
+                                        <i class="fas fa-plus text-sm"></i>
+                                    </button>
+                                </div>
+                                <button class="add-to-cart bg-primary hover:bg-primary/90 text-white font-medium py-2.5 px-5 rounded-lg flex items-center transition-all duration-300 hover:scale-105 active:scale-95" 
+                                        data-id="2" 
+                                        data-name="Chocolate Fudge Cake" 
+                                        data-price="4500">
+                                    <i class="fas fa-plus mr-2"></i> Add
                                 </button>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Pastry 3 -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 pastry-card" data-id="3">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Donuts" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                    <div class="pastry-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 animate-fade-in" data-id="3" data-category="snacks">
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1160&q=80" 
+                                 alt="Glazed Donuts" 
+                                 class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                            
+                            <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <button class="quick-view-btn px-5 py-2.5 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium flex items-center" data-id="3">
+                                    <i class="fas fa-eye mr-2"></i> Quick View
+                                </button>
+                            </div>
                         </div>
+                        
                         <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Glazed Donuts</h3>
-                            <p class="text-[#5A534A] dark:text-[#CCCCCC] mb-4">Soft, fluffy donuts with a variety of delicious glazes.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦800</span>
-                                <button class="add-to-cart bg-[#E76F51] dark:bg-[#E9C46A] hover:bg-[#D65A40] dark:hover:bg-[#D4B152] text-white dark:text-[#2D2A22] py-2 px-4 rounded-lg" data-id="3" data-name="Glazed Donuts" data-price="800">
-                                    <i class="fas fa-plus mr-2"></i> Add to Cart
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200">Glazed Donuts</h3>
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                    <span class="text-sm font-semibold">4.6</span>
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                                Fluffy donuts with a variety of delicious glazes. Perfect sweet treat.
+                            </p>
+                            
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                                <div>
+                                    <span class="text-2xl font-bold text-primary">₦800</span>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Per piece</p>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 hover:border-primary hover:bg-primary/10 transition-colors duration-300" onclick="updateQuantity(3, -1)">
+                                        <i class="fas fa-minus text-sm"></i>
+                                    </button>
+                                    <span id="quantity-3" class="font-semibold">1</span>
+                                    <button class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 hover:border-primary hover:bg-primary/10 transition-colors duration-300" onclick="updateQuantity(3, 1)">
+                                        <i class="fas fa-plus text-sm"></i>
+                                    </button>
+                                </div>
+                                <button class="add-to-cart bg-primary hover:bg-primary/90 text-white font-medium py-2.5 px-5 rounded-lg flex items-center transition-all duration-300 hover:scale-105 active:scale-95" 
+                                        data-id="3" 
+                                        data-name="Glazed Donuts" 
+                                        data-price="800">
+                                    <i class="fas fa-plus mr-2"></i> Add
                                 </button>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Pastry 4 -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 pastry-card" data-id="4">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80" alt="Pancakes" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Berry Pancakes</h3>
-                            <p class="text-[#5A534A] dark:text-[#CCCCCC] mb-4">Fluffy pancakes topped with fresh berries and maple syrup.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦2,500</span>
-                                <button class="add-to-cart bg-[#E76F51] dark:bg-[#E9C46A] hover:bg-[#D65A40] dark:hover:bg-[#D4B152] text-white dark:text-[#2D2A22] py-2 px-4 rounded-lg" data-id="4" data-name="Berry Pancakes" data-price="2500">
-                                    <i class="fas fa-plus mr-2"></i> Add to Cart
+                    <div class="pastry-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 animate-fade-in" data-id="4" data-category="breakfast">
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=1080&q=80" 
+                                 alt="Berry Pancakes" 
+                                 class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                            
+                            <div class="absolute top-4 right-4 px-3 py-1.5 bg-red-500/90 backdrop-blur-sm rounded-full">
+                                <span class="text-xs font-semibold text-white flex items-center">
+                                    <i class="fas fa-fire mr-1.5"></i> Only 6 left
+                                </span>
+                            </div>
+                            
+                            <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+                                <button class="quick-view-btn px-5 py-2.5 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium flex items-center" data-id="4">
+                                    <i class="fas fa-eye mr-2"></i> Quick View
                                 </button>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Pastry 5 - Macarons -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 pastry-card" data-id="5">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1569929238190-869826b1bb05?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Macarons" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        </div>
+                        
                         <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">French Macarons</h3>
-                            <p class="text-[#5A534A] dark:text-[#CCCCCC] mb-4">Delicate almond meringue cookies with creamy fillings.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦2,000</span>
-                                <button class="add-to-cart bg-[#E76F51] dark:bg-[#E9C46A] hover:bg-[#D65A40] dark:hover:bg-[#D4B152] text-white dark:text-[#2D2A22] py-2 px-4 rounded-lg" data-id="5" data-name="French Macarons" data-price="2000">
-                                    <i class="fas fa-plus mr-2"></i> Add to Cart
-                                </button>
+                            <div class="flex items-start justify-between mb-3">
+                                <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200">Berry Pancakes</h3>
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400 text-sm mr-1"></i>
+                                    <span class="text-sm font-semibold">4.7</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Pastry 6 - Tiramisu -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 pastry-card" data-id="6">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Tiramisu" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Classic Tiramisu</h3>
-                            <p class="text-[#5A534A] dark:text-[#CCCCCC] mb-4">Coffee-flavored Italian dessert with mascarpone cheese.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦3,500</span>
-                                <button class="add-to-cart bg-[#E76F51] dark:bg-[#E9C46A] hover:bg-[#D65A40] dark:hover:bg-[#D4B152] text-white dark:text-[#2D2A22] py-2 px-4 rounded-lg" data-id="6" data-name="Classic Tiramisu" data-price="3500">
-                                    <i class="fas fa-plus mr-2"></i> Add to Cart
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pastry 7 - Apple Pie -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 pastry-card" data-id="7">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1562007908-17c67e878c88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Apple Pie" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Homemade Apple Pie</h3>
-                            <p class="text-[#5A534A] dark:text-[#CCCCCC] mb-4">Warm apple pie with cinnamon and flaky crust.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦2,800</span>
-                                <button class="add-to-cart bg-[#E76F51] dark:bg-[#E9C46A] hover:bg-[#D65A40] dark:hover:bg-[#D4B152] text-white dark:text-[#2D2A22] py-2 px-4 rounded-lg" data-id="7" data-name="Homemade Apple Pie" data-price="2800">
-                                    <i class="fas fa-plus mr-2"></i> Add to Cart
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pastry 8 - Cinnamon Rolls -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 pastry-card" data-id="8">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1559620192-032c64bc86af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Cinnamon Rolls" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-2">Cinnamon Rolls</h3>
-                            <p class="text-[#5A534A] dark:text-[#CCCCCC] mb-4">Soft, gooey cinnamon rolls with cream cheese frosting.</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-2xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦1,800</span>
-                                <button class="add-to-cart bg-[#E76F51] dark:bg-[#E9C46A] hover:bg-[#D65A40] dark:hover:bg-[#D4B152] text-white dark:text-[#2D2A22] py-2 px-4 rounded-lg" data-id="8" data-name="Cinnamon Rolls" data-price="1800">
-                                    <i class="fas fa-plus mr-2"></i> Add to Cart
+                            
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                                Fluffy pancakes topped with fresh berries and maple syrup.
+                            </p>
+                            
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700">
+                                <div>
+                                    <span class="text-2xl font-bold text-primary">₦2,500</span>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Stack of 3</p>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <button class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 hover:border-primary hover:bg-primary/10 transition-colors duration-300" onclick="updateQuantity(4, -1)">
+                                        <i class="fas fa-minus text-sm"></i>
+                                    </button>
+                                    <span id="quantity-4" class="font-semibold">1</span>
+                                    <button class="w-9 h-9 flex items-center justify-center rounded-full border border-gray-300 dark:border-gray-600 hover:border-primary hover:bg-primary/10 transition-colors duration-300" onclick="updateQuantity(4, 1)">
+                                        <i class="fas fa-plus text-sm"></i>
+                                    </button>
+                                </div>
+                                <button class="add-to-cart bg-primary hover:bg-primary/90 text-white font-medium py-2.5 px-5 rounded-lg flex items-center transition-all duration-300 hover:scale-105 active:scale-95" 
+                                        data-id="4" 
+                                        data-name="Berry Pancakes" 
+                                        data-price="2500">
+                                    <i class="fas fa-plus mr-2"></i> Add
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mt-12 text-center">
-                    <button id="viewAllPastriesBtn" class="inline-block bg-[#2A9D8F] hover:bg-[#238277] text-white font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-                        View All Pastries <i class="fas fa-arrow-right ml-2"></i>
+                <!-- View All Button -->
+                <div class="mt-16 text-center">
+                    <button id="viewAllPastriesBtn" class="inline-flex items-center px-8 py-3.5 bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 group">
+                        View All Pastries
+                        <i class="fas fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform duration-300"></i>
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- All Pastries Section (Hidden by default) -->
-        <section id="allPastriesSection" class="hidden py-16">
+        <!-- ========== ALL PASTRIES SECTION ========== -->
+        <section id="allPastriesSection" class="hidden py-16 bg-gradient-to-b from-white to-gray-50 dark:from-dark dark:to-gray-900">
             <div class="container mx-auto px-4">
-                <div class="flex justify-between items-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold">All <span class="text-[#E76F51] dark:text-[#E9C46A]">Pastries</span></h2>
-                    <button id="backToFeaturedBtn" class="bg-[#2D2A22] dark:bg-[#F5F5F5] text-white dark:text-[#2D2A22] hover:bg-[#E76F51] dark:hover:bg-[#E9C46A] font-semibold py-2 px-6 rounded-lg transition-all duration-300">
-                        <i class="fas fa-arrow-left mr-2"></i> Back to Featured
+                <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-200">Our Complete <span class="text-primary">Menu</span></h2>
+                        <p class="text-gray-600 dark:text-gray-400 mt-2">Discover all our delicious pastries and treats</p>
+                    </div>
+                    <button id="backToFeaturedBtn" class="mt-4 md:mt-0 px-6 py-3 bg-white dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary text-gray-800 dark:text-white font-semibold rounded-full flex items-center transition-all duration-300 hover:scale-105 group">
+                        <i class="fas fa-arrow-left mr-3 group-hover:-translate-x-1 transition-transform duration-300"></i>
+                        Back to Featured
                     </button>
                 </div>
                 
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="allPastriesGrid">
-                    <!-- All pastries will be dynamically loaded here -->
+                    <!-- Dynamically loaded -->
                 </div>
             </div>
         </section>
 
-        <!-- Opening Hours -->
-        <section id="hours" class="py-16">
+        <!-- ========== HOURS SECTION ========== -->
+        <section id="hours" class="py-16 bg-white dark:bg-gray-900">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Opening <span class="text-[#E76F51] dark:text-[#E9C46A]">Hours</span></h2>
-                
-                <div class="max-w-md mx-auto bg-white dark:bg-[#333333] rounded-xl shadow-lg overflow-hidden">
-                    <div class="bg-[#E76F51] dark:bg-[#E9C46A] text-white dark:text-[#2D2A22] py-4 px-6">
-                        <h3 class="text-2xl font-bold">We're Open!</h3>
-                        <p class="text-white/90 dark:text-[#2D2A22]/90">Visit us for fresh pastries</p>
+                <div class="max-w-4xl mx-auto">
+                    <!-- Section Header -->
+                    <div class="text-center mb-12 animate-fade-up">
+                        <span class="text-primary font-medium text-sm uppercase tracking-wider">Visit Us</span>
+                        <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-800 dark:text-gray-200 mt-3 mb-6">
+                            Opening <span class="text-primary">Hours</span>
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 text-lg max-w-xl mx-auto">
+                            Stop by for a freshly baked treat or order ahead for pickup.
+                        </p>
                     </div>
-                    
-                    <div class="p-6">
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center py-3 border-b border-[#F5E6D3] dark:border-[#444444]">
-                                <span class="font-medium">Monday - Friday</span>
-                                <span class="font-bold">7:00 AM - 8:00 PM</span>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Hours Card -->
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 shadow-lg animate-fade-up">
+                            <div class="flex items-center gap-4 mb-8">
+                                <div class="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center">
+                                    <i class="fas fa-clock text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Store Hours</h3>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">Fresh bakes available daily</p>
+                                </div>
                             </div>
-                            <div class="flex justify-between items-center py-3 border-b border-[#F5E6D3] dark:border-[#444444]">
-                                <span class="font-medium">Saturday</span>
-                                <span class="font-bold">8:00 AM - 9:00 PM</span>
+
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between py-4 border-b border-gray-200 dark:border-gray-700">
+                                    <span class="font-medium text-gray-700 dark:text-gray-300">Monday - Friday</span>
+                                    <span class="text-primary font-semibold">7:00 AM - 8:00 PM</span>
+                                </div>
+                                
+                                <div class="flex items-center justify-between py-4 border-b border-gray-200 dark:border-gray-700">
+                                    <span class="font-medium text-gray-700 dark:text-gray-300">Saturday</span>
+                                    <span class="text-primary font-semibold">8:00 AM - 9:00 PM</span>
+                                </div>
+                                
+                                <div class="flex items-center justify-between py-4">
+                                    <span class="font-medium text-gray-700 dark:text-gray-300">Sunday</span>
+                                    <span class="text-primary font-semibold">9:00 AM - 6:00 PM</span>
+                                </div>
                             </div>
-                            <div class="flex justify-between items-center py-3 border-b border-[#F5E6D3] dark:border-[#444444]">
-                                <span class="font-medium">Sunday</span>
-                                <span class="font-bold">9:00 AM - 6:00 PM</span>
-                            </div>
-                           
                         </div>
-                        
-                        <div class="mt-8 p-4 bg-[#FEF7E9] dark:bg-[#2D2A22] rounded-lg border border-[#E76F51]/30 dark:border-[#E9C46A]/30">
-                            <div class="flex items-center">
-                                <i class="fas fa-info-circle text-[#E76F51] dark:text-[#E9C46A] text-xl mr-3"></i>
-                                <p class="text-sm">We accept pre-orders for special occasions and bulk purchases. Call us at <strong>+234 801 234 5678</strong> to place your order.</p>
+
+                        <!-- Contact Card -->
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 shadow-lg animate-fade-up">
+                            <div class="flex items-center gap-4 mb-8">
+                                <div class="w-14 h-14 rounded-2xl bg-primary/20 flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200">Find Us</h3>
+                                    <p class="text-sm text-gray-600 dark:text-gray-400">We'd love to see you</p>
+                                </div>
+                            </div>
+
+                            <div class="space-y-6">
+                                <!-- Location -->
+                                <div class="flex items-start gap-4">
+                                    <i class="fas fa-map-marker-alt text-primary mt-1"></i>
+                                    <div>
+                                        <p class="font-medium text-gray-700 dark:text-gray-300">Location</p>
+                                        <p class="text-gray-600 dark:text-gray-400">42 Pastry Avenue, Victoria Island, Lagos, Nigeria</p>
+                                    </div>
+                                </div>
+
+                                <!-- Phone -->
+                                <div class="flex items-start gap-4">
+                                    <i class="fas fa-phone-alt text-primary mt-1"></i>
+                                    <div>
+                                        <p class="font-medium text-gray-700 dark:text-gray-300">Phone</p>
+                                        <a href="tel:+2348012345678" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                                            +234 801 234 5678
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="flex items-start gap-4">
+                                    <i class="fas fa-envelope text-primary mt-1"></i>
+                                    <div>
+                                        <p class="font-medium text-gray-700 dark:text-gray-300">Email</p>
+                                        <a href="mailto:hello@marykaysbakehouse.com" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                                            hello@marykaysbakehouse.com
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -343,99 +561,99 @@
             </div>
         </section>
 
-        <!-- Order & Cart Section -->
-        <section id="order" class="bg-[#F5E6D3] dark:bg-[#2D2A22] py-16">
+        <!-- ========== ORDER SECTION ========== -->
+        <section id="order" class="bg-gray-50 dark:bg-gray-900 py-16">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Place Your <span class="text-[#E76F51] dark:text-[#E9C46A]">Order</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-200">Place Your <span class="text-primary">Order</span></h2>
                 
                 <div class="grid md:grid-cols-2 gap-12">
                     <!-- Order Form -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl shadow-lg p-8">
-                        <h3 class="text-2xl font-bold mb-6">Order Details</h3>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-200">Order Details</h3>
                         
                         <form id="orderForm">
                             <div class="mb-6">
-                                <label class="block text-lg font-medium mb-2" for="name">Full Name</label>
-                                <input type="text" id="name" class="w-full p-3 border border-[#E76F51]/30 dark:border-[#E9C46A]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E76F51] dark:focus:ring-[#E9C46A] bg-transparent" required>
+                                <label class="block text-lg font-medium mb-2 text-gray-700 dark:text-gray-300" for="name">Full Name</label>
+                                <input type="text" id="name" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200" required>
                             </div>
                             
                             <div class="mb-6">
-                                <label class="block text-lg font-medium mb-2" for="phone">Phone Number</label>
-                                <input type="tel" id="phone" class="w-full p-3 border border-[#E76F51]/30 dark:border-[#E9C46A]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E76F51] dark:focus:ring-[#E9C46A] bg-transparent" required>
+                                <label class="block text-lg font-medium mb-2 text-gray-700 dark:text-gray-300" for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200" required>
                             </div>
                             
                             <div class="mb-6">
-                                <label class="block text-lg font-medium mb-2" for="address">Delivery Address</label>
-                                <textarea id="address" rows="3" class="w-full p-3 border border-[#E76F51]/30 dark:border-[#E9C46A]/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#E76F51] dark:focus:ring-[#E9C46A] bg-transparent" required></textarea>
+                                <label class="block text-lg font-medium mb-2 text-gray-700 dark:text-gray-300" for="address">Delivery Address</label>
+                                <textarea id="address" rows="3" class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200" required></textarea>
                             </div>
                             
                             <div class="mb-8">
-                                <label class="block text-lg font-medium mb-2">Delivery Time</label>
+                                <label class="block text-lg font-medium mb-2 text-gray-700 dark:text-gray-300">Delivery Time</label>
                                 <div class="grid grid-cols-2 gap-4">
-                                    <div>
+                                    <div class="flex items-center">
                                         <input type="radio" id="asap" name="deliveryTime" value="asap" checked class="mr-2">
-                                        <label for="asap">As soon as possible</label>
+                                        <label for="asap" class="text-gray-700 dark:text-gray-300">As soon as possible</label>
                                     </div>
-                                    <div>
+                                    <div class="flex items-center">
                                         <input type="radio" id="schedule" name="deliveryTime" value="schedule" class="mr-2">
-                                        <label for="schedule">Schedule for later</label>
+                                        <label for="schedule" class="text-gray-700 dark:text-gray-300">Schedule for later</label>
                                     </div>
                                 </div>
                             </div>
                             
-                            <button type="submit" id="placeOrderBtn" class="w-full bg-[#E76F51] dark:bg-[#E9C46A] hover:bg-[#D65A40] dark:hover:bg-[#D4B152] text-white dark:text-[#2D2A22] font-bold py-4 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 text-lg">
+                            <button type="submit" id="placeOrderBtn" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 px-6 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 text-lg">
                                 Place Order <i class="fas fa-paper-plane ml-2"></i>
                             </button>
                         </form>
                         
-                        <!-- Success Message (hidden by default) -->
+                        <!-- Success Message -->
                         <div id="successMessage" class="hidden mt-6 p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg success-message">
                             <div class="flex items-center">
                                 <i class="fas fa-check-circle text-green-500 dark:text-green-400 text-2xl mr-4"></i>
                                 <div>
                                     <h4 class="text-xl font-bold text-green-700 dark:text-green-300">Order Placed Successfully!</h4>
-                                    <p class="text-green-600 dark:text-green-400 mt-1">Thank you for your order. We'll contact you shortly to confirm the details.</p>
-                                    <p class="text-green-600 dark:text-green-400 mt-2">Order ID: <span id="orderId" class="font-bold">STL-</span></p>
+                                    <p class="text-green-600 dark:text-green-400 mt-1">Thank you for your order. We'll contact you shortly.</p>
+                                    <p class="text-green-600 dark:text-green-400 mt-2">Order ID: <span id="orderId" class="font-bold">MKH-123456</span></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <!-- Cart -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl shadow-lg p-8">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
                         <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-2xl font-bold">Your Cart</h3>
+                            <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200">Your Cart</h3>
                             <button id="clearCart" class="text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300">
                                 <i class="fas fa-trash-alt mr-2"></i> Clear Cart
                             </button>
                         </div>
                         
                         <div id="cartItems" class="mb-8 max-h-80 overflow-y-auto">
-                            <!-- Cart items will be dynamically added here -->
-                            <div class="text-center py-10 text-[#5A534A] dark:text-[#CCCCCC]">
+                            <!-- Dynamically loaded -->
+                            <div class="text-center py-10 text-gray-500 dark:text-gray-400">
                                 <i class="fas fa-shopping-cart text-4xl mb-4 opacity-30"></i>
                                 <p class="text-lg">Your cart is empty</p>
                                 <p class="text-sm">Add some delicious pastries from our menu</p>
                             </div>
                         </div>
                         
-                        <div class="border-t border-[#F5E6D3] dark:border-[#444444] pt-6">
+                        <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
                             <div class="flex justify-between items-center mb-4">
-                                <span class="text-lg font-medium">Subtotal</span>
-                                <span id="subtotal" class="text-2xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦0</span>
+                                <span class="text-lg font-medium text-gray-700 dark:text-gray-300">Subtotal</span>
+                                <span id="subtotal" class="text-2xl font-bold text-primary">₦0</span>
                             </div>
                             
                             <div class="flex justify-between items-center mb-6">
-                                <span class="text-lg font-medium">Delivery Fee</span>
-                                <span id="deliveryFee" class="text-xl font-bold">₦1,000</span>
+                                <span class="text-lg font-medium text-gray-700 dark:text-gray-300">Delivery Fee</span>
+                                <span id="deliveryFee" class="text-xl font-bold text-gray-700 dark:text-gray-300">₦1,000</span>
                             </div>
                             
-                            <div class="flex justify-between items-center mb-8 pt-4 border-t border-[#F5E6D3] dark:border-[#444444]">
-                                <span class="text-xl font-bold">Total</span>
-                                <span id="total" class="text-3xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦1,000</span>
+                            <div class="flex justify-between items-center mb-8 pt-4 border-t border-gray-200 dark:border-gray-700">
+                                <span class="text-xl font-bold text-gray-800 dark:text-gray-200">Total</span>
+                                <span id="total" class="text-3xl font-bold text-primary">₦1,000</span>
                             </div>
                             
-                            <div class="text-sm text-[#5A534A] dark:text-[#CCCCCC]">
+                            <div class="text-sm text-gray-600 dark:text-gray-400">
                                 <p><i class="fas fa-info-circle mr-2"></i> Free delivery on orders over ₦10,000</p>
                             </div>
                         </div>
@@ -444,120 +662,106 @@
             </div>
         </section>
 
-        <!-- Contact Information -->
+        <!-- ========== CONTACT SECTION ========== -->
         <section id="contact" class="py-16">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Get In <span class="text-[#E76F51] dark:text-[#E9C46A]">Touch</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800 dark:text-gray-200">Get In <span class="text-primary">Touch</span></h2>
                 
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Address -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl shadow-lg p-8 text-center hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
-                        <div class="bg-[#F5E6D3] dark:bg-[#2D2A22] h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-map-marker-alt text-2xl text-[#E76F51] dark:text-[#E9C46A]"></i>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 text-center hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-primary/20 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-map-marker-alt text-2xl text-primary"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-4">Visit Us</h3>
-                        <p class="text-[#5A534A] dark:text-[#CCCCCC]">42 Pastry Avenue, Victoria Island, Lagos, Nigeria</p>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Visit Us</h3>
+                        <p class="text-gray-600 dark:text-gray-400">42 Pastry Avenue, Victoria Island, Lagos, Nigeria</p>
                     </div>
                     
                     <!-- Phone -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl shadow-lg p-8 text-center hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
-                        <div class="bg-[#F5E6D3] dark:bg-[#2D2A22] h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-phone-alt text-2xl text-[#E76F51] dark:text-[#E9C46A]"></i>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 text-center hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-primary/20 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-phone-alt text-2xl text-primary"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-4">Call Us</h3>
-                        <p class="text-[#5A534A] dark:text-[#CCCCCC]">+234 801 234 5678</p>
-                        <p class="text-[#5A534A] dark:text-[#CCCCCC]">+234 802 345 6789</p>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Call Us</h3>
+                        <p class="text-gray-600 dark:text-gray-400">+234 801 234 5678</p>
+                        <p class="text-gray-600 dark:text-gray-400">+234 802 345 6789</p>
                     </div>
                     
                     <!-- Email -->
-                    <div class="bg-white dark:bg-[#333333] rounded-xl shadow-lg p-8 text-center hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
-                        <div class="bg-[#F5E6D3] dark:bg-[#2D2A22] h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                            <i class="fas fa-envelope text-2xl text-[#E76F51] dark:text-[#E9C46A]"></i>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 text-center hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-primary/20 h-16 w-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-envelope text-2xl text-primary"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-4">Email Us</h3>
-                        <p class="text-[#5A534A] dark:text-[#CCCCCC]">hello@sweettreatslagos.com</p>
-                        <p class="text-[#5A534A] dark:text-[#CCCCCC]">orders@sweettreatslagos.com</p>
+                        <h3 class="text-xl font-bold mb-4 text-gray-800 dark:text-gray-200">Email Us</h3>
+                        <p class="text-gray-600 dark:text-gray-400">hello@marykaysbakehouse.com</p>
+                        <p class="text-gray-600 dark:text-gray-400">orders@marykaysbakehouse.com</p>
                     </div>
                 </div>
                 
-                <div class="mt-12 bg-[#E76F51] dark:bg-[#E9C46A] rounded-xl shadow-lg overflow-hidden">
+                <div class="mt-12 bg-primary rounded-xl shadow-lg overflow-hidden">
                     <div class="grid md:grid-cols-2">
                         <div class="p-8 md:p-12">
-                            <h3 class="text-2xl font-bold text-white dark:text-[#2D2A22] mb-4">Follow Us</h3>
-                            <p class="text-white/90 dark:text-[#2D2A22]/90 mb-6">Stay updated on our latest creations and special offers.</p>
+                            <h3 class="text-2xl font-bold text-white mb-4">Follow Us</h3>
+                            <p class="text-white/90 mb-6">Stay updated on our latest creations and special offers.</p>
                             <div class="flex space-x-4">
-                                <a href="#" class="bg-white/20 hover:bg-white/30 text-white dark:text-[#2D2A22] h-10 w-10 rounded-full flex items-center justify-center">
+                                <a href="#" class="bg-white/20 hover:bg-white/30 text-white h-10 w-10 rounded-full flex items-center justify-center">
                                     <i class="fab fa-facebook-f"></i>
                                 </a>
-                                <a href="#" class="bg-white/20 hover:bg-white/30 text-white dark:text-[#2D2A22] h-10 w-10 rounded-full flex items-center justify-center">
+                                <a href="#" class="bg-white/20 hover:bg-white/30 text-white h-10 w-10 rounded-full flex items-center justify-center">
                                     <i class="fab fa-instagram"></i>
                                 </a>
-                                <a href="#" class="bg-white/20 hover:bg-white/30 text-white dark:text-[#2D2A22] h-10 w-10 rounded-full flex items-center justify-center">
+                                <a href="#" class="bg-white/20 hover:bg-white/30 text-white h-10 w-10 rounded-full flex items-center justify-center">
                                     <i class="fab fa-twitter"></i>
                                 </a>
-                                <a href="#" class="bg-white/20 hover:bg-white/30 text-white dark:text-[#2D2A22] h-10 w-10 rounded-full flex items-center justify-center">
+                                <a href="#" class="bg-white/20 hover:bg-white/30 text-white h-10 w-10 rounded-full flex items-center justify-center">
                                     <i class="fab fa-whatsapp"></i>
                                 </a>
                             </div>
                         </div>
-                        
-                        
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-[#2D2A22] dark:bg-[#111111] text-white py-8">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-center items-center text-center">
-                <div>
-                    <div class="flex items-center space-x-2 justify-center">
-                        <i class="fas fa-birthday-cake text-xl text-[#E76F51] dark:text-[#E9C46A]"></i>
-                        <h3 class="text-xl font-bold">. MaryKay's Bakehouse</h3>
-                    </div>
-                    <p class="text-white/70 mt-2">© 2023 . MaryKay's Bakehouse. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    <!-- ========== SIDEBARS & MODALS ========== -->
+    
     <!-- Cart Sidebar -->
-    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-full md:w-96 bg-white dark:bg-[#333333] shadow-2xl z-50 transform translate-x-full transition-transform duration-500">
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-full md:w-96 bg-white dark:bg-gray-800 shadow-2xl z-50 transform translate-x-full transition-transform duration-500">
         <div class="p-6 h-full flex flex-col">
             <div class="flex justify-between items-center mb-8">
-                <h3 class="text-2xl font-bold">Your Cart</h3>
-                <button id="closeCart" class="text-2xl hover:text-[#E76F51] dark:hover:text-[#E9C46A]">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200">Your Cart</h3>
+                <button id="closeCart" class="text-2xl hover:text-primary dark:hover:text-secondary">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             
             <div id="sidebarCartItems" class="flex-grow overflow-y-auto mb-6">
-                <!-- Cart items will be dynamically added here -->
-                <div class="text-center py-10 text-[#5A534A] dark:text-[#CCCCCC]">
+                <!-- Dynamically loaded -->
+                <div class="text-center py-10 text-gray-500 dark:text-gray-400">
                     <i class="fas fa-shopping-cart text-4xl mb-4 opacity-30"></i>
                     <p class="text-lg">Your cart is empty</p>
                     <p class="text-sm">Add some delicious pastries from our menu</p>
                 </div>
             </div>
             
-            <div class="border-t border-[#F5E6D3] dark:border-[#444444] pt-6">
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-l font-medium">Subtotal</span>
-                    <span id="sidebarSubtotal" class="text-xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦0</span>
+                    <span class="text-lg font-medium text-gray-700 dark:text-gray-300">Subtotal</span>
+                    <span id="sidebarSubtotal" class="text-xl font-bold text-primary">₦0</span>
+                </div>
+                
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-lg font-medium text-gray-700 dark:text-gray-300">Delivery Fee</span>
+                    <span id="sidebarDeliveryFee" class="text-xl font-bold text-gray-700 dark:text-gray-300">₦1,000</span>
                 </div>
                 
                 <div class="flex justify-between items-center mb-8">
-                    <span class="text-l font-medium">Delivery Fee</span>
-                    <span id="sidebarTotal" class="text-xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦1,000</span>
-                </div>
-                <div class="flex justify-between items-center mb-8">
-                    <span class="text-lg font-medium">Total</span>
-                    <span id="sidebarTotal" class="text-3xl font-bold text-[#E76F51] dark:text-[#E9C46A]">₦1,000</span>
+                    <span class="text-xl font-bold text-gray-800 dark:text-gray-200">Total</span>
+                    <span id="sidebarTotal" class="text-2xl font-bold text-primary">₦1,000</span>
                 </div>
                 
-                <a href="#order" id="checkoutBtn" class="block w-full bg-[#E76F51] dark:bg-[#E9C46A] hover:bg-[#D65A40] dark:hover:bg-[#D4B152] text-white dark:text-[#2D2A22] font-bold py-4 px-6 rounded-lg shadow-md hover:shadow-lg text-center">
+                <a href="#order" id="checkoutBtn" class="block w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 px-6 rounded-lg shadow-md hover:shadow-lg text-center">
                     Proceed to Checkout <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
@@ -565,95 +769,149 @@
     </div>
 
     <!-- Pastry Detail Modal -->
-    <div id="pastryModal" class="fixed inset-0 z-[100] hidden">
-        <div class="modal-overlay absolute inset-0"></div>
-        <div class="absolute inset-0 flex items-center justify-center p-4">
-            <div class="glass-effect w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl modal-appear">
-                <div class="p-6 md:p-8">
-                    <div class="flex justify-between items-start mb-6">
-                        <h2 id="modalPastryName" class="text-3xl md:text-4xl font-bold"></h2>
-                        <button id="closeModal" class="text-2xl hover:text-[#E76F51] dark:hover:text-[#E9C46A]">
+    <div id="pastryModal" class="fixed inset-0 z-[1000] hidden">
+        <div class="modal-overlay absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-300"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4 md:p-6">
+            <div class="modal-container w-full max-w-5xl max-h-[90vh] overflow-hidden rounded-3xl shadow-2xl transform transition-all duration-300 scale-95 opacity-0">
+                <!-- Modal Header -->
+                <div class="modal-header bg-gradient-to-r from-primary to-orange-500 p-6 md:p-8">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 pr-4">
+                            <h2 id="modalPastryName" class="text-2xl md:text-3xl font-bold text-white mb-2"></h2>
+                            <div class="flex items-center text-white/90">
+                                <i class="fas fa-clock text-sm mr-2"></i>
+                                <span class="text-sm">Fresh in: </span>
+                                <span id="modalPastryTimer" class="font-bold ml-1"></span>
+                            </div>
+                        </div>
+                        <button id="closeModal" class="text-white hover:text-gray-100 text-2xl md:text-3xl transition-transform hover:rotate-90 duration-300">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
-                    
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <!-- Left Column: Image and Basic Info -->
-                        <div>
-                            <div class="rounded-xl overflow-hidden shadow-lg mb-6">
-                                <img id="modalPastryImage" src="" alt="" class="w-full h-64 md:h-80 object-cover">
-                            </div>
-                            
-                            <div class="mb-6">
-                                <h3 class="text-xl font-bold mb-4">Quick Info</h3>
-                                <div class="grid grid-cols-2 gap-4">
-                                    <div class="bg-[#F5E6D3] dark:bg-[#2D2A22] p-4 rounded-lg">
-                                        <p class="text-sm text-[#5A534A] dark:text-[#CCCCCC]">Price</p>
-                                        <p id="modalPastryPrice" class="text-2xl font-bold text-[#E76F51] dark:text-[#E9C46A]"></p>
-                                    </div>
-                                    <div class="bg-[#F5E6D3] dark:bg-[#2D2A22] p-4 rounded-lg">
-                                        <p class="text-sm text-[#5A534A] dark:text-[#CCCCCC]">Remaining</p>
-                                        <p id="modalPastryRemaining" class="text-2xl font-bold"></p>
+                </div>
+
+                <!-- Modal Content -->
+                <div class="modal-content bg-white dark:bg-gray-800 overflow-y-auto max-h-[calc(90vh-120px)]">
+                    <div class="p-6 md:p-8">
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <!-- Left Column: Image & Key Info -->
+                            <div class="space-y-6">
+                                <!-- Main Image -->
+                                <div class="relative rounded-2xl overflow-hidden shadow-xl aspect-square">
+                                    <img id="modalPastryImage" src="" alt="" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                                    <div class="absolute top-4 right-4">
+                                        <span id="modalPastryStockStatus" class="px-4 py-2 rounded-full text-white font-semibold text-sm shadow-lg"></span>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <!-- Stock Indicator -->
-                            <div class="mb-6">
-                                <div class="flex justify-between items-center mb-2">
-                                    <h3 class="text-lg font-bold">Stock Status</h3>
-                                    <span id="modalPastryStockStatus" class="text-sm font-bold"></span>
+
+                                <!-- Quick Stats -->
+                                <div class="grid grid-cols-3 gap-4">
+                                    <div class="stat-card bg-gray-50 dark:bg-gray-900 p-4 rounded-xl text-center">
+                                        <div class="text-primary mb-2">
+                                            <i class="fas fa-tag text-xl"></i>
+                                        </div>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">Price</p>
+                                        <p id="modalPastryPrice" class="text-2xl font-bold text-gray-800 dark:text-white mt-1"></p>
+                                    </div>
+                                    
+                                    <div class="stat-card bg-gray-50 dark:bg-gray-900 p-4 rounded-xl text-center">
+                                        <div class="text-green-500 mb-2">
+                                            <i class="fas fa-box-open text-xl"></i>
+                                        </div>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">Available</p>
+                                        <p id="modalPastryRemaining" class="text-2xl font-bold text-gray-800 dark:text-white mt-1"></p>
+                                    </div>
+                                    
+                                    <div class="stat-card bg-gray-50 dark:bg-gray-900 p-4 rounded-xl text-center">
+                                        <div class="text-yellow-500 mb-2">
+                                            <i class="fas fa-fire text-xl"></i>
+                                        </div>
+                                        <p class="text-gray-600 dark:text-gray-400 text-sm">Popularity</p>
+                                        <p class="text-2xl font-bold text-gray-800 dark:text-white mt-1">4.8/5</p>
+                                    </div>
                                 </div>
-                                <div class="progress-bar bg-[#F5E6D3] dark:bg-[#2D2A22]">
-                                    <div id="modalPastryStockBar" class="progress-fill w-3/4"></div>
-                                </div>
-                                <p class="text-sm text-[#5A534A] dark:text-[#CCCCCC] mt-2" id="modalPastryStockMessage"></p>
-                            </div>
-                            
-                            <!-- Next Batch Timer -->
-                            <div class="mb-6">
-                                <h3 class="text-lg font-bold mb-2">Next Fresh Batch</h3>
-                                <div class="bg-[#F5E6D3] dark:bg-[#2D2A22] p-4 rounded-lg">
-                                    <p class="text-sm text-[#5A534A] dark:text-[#CCCCCC] mb-2">Available in:</p>
-                                    <div id="modalPastryTimer" class="text-2xl font-bold text-[#E76F51] dark:text-[#E9C46A]">1 hour 30 minutes</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Right Column: Details and Reviews -->
-                        <div>
-                            <div class="mb-6">
-                                <h3 class="text-xl font-bold mb-4">Description</h3>
-                                <p id="modalPastryDescription" class="text-[#5A534A] dark:text-[#CCCCCC]"></p>
-                            </div>
-                            
-                            <!-- Customer Reviews -->
-                            <div class="mb-6">
-                                <h3 class="text-xl font-bold mb-4">Customer Reviews</h3>
-                                <div id="modalPastryReviews" class="space-y-4">
-                                    <!-- Reviews will be dynamically added here -->
+
+                                <!-- Stock Progress -->
+                                <div class="bg-gray-50 dark:bg-gray-900 p-5 rounded-2xl">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h4 class="font-bold text-gray-800 dark:text-white">
+                                            <i class="fas fa-chart-line mr-2 text-primary"></i>
+                                            Stock Level
+                                        </h4>
+                                        <span id="modalPastryStockPercentage" class="text-sm font-bold text-gray-700 dark:text-gray-300"></span>
+                                    </div>
+                                    <div class="progress-bar-container">
+                                        <div id="modalPastryStockBar" class="progress-bar-fill"></div>
+                                    </div>
+                                    <p id="modalPastryStockMessage" class="text-sm text-gray-600 dark:text-gray-400 mt-3"></p>
                                 </div>
                             </div>
-                            
-                            <!-- Add to Cart Section -->
-                            <div class="mt-8 pt-6 border-t border-[#E76F51]/20 dark:border-[#E9C46A]/20">
-                                <h3 class="text-xl font-bold mb-4">Order This Pastry</h3>
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <p class="text-sm text-[#5A534A] dark:text-[#CCCCCC] mb-2">Quantity</p>
-                                        <div class="flex items-center">
-                                            <button id="modalDecreaseQty" class="text-[#E76F51] dark:text-[#E9C46A] hover:text-[#D65A40] dark:hover:text-[#D4B152] h-10 w-10 rounded-full border border-[#E76F51] dark:border-[#E9C46A] flex items-center justify-center">
-                                                <i class="fas fa-minus"></i>
-                                            </button>
-                                            <span id="modalQty" class="mx-4 text-2xl font-bold">1</span>
-                                            <button id="modalIncreaseQty" class="text-[#E76F51] dark:text-[#E9C46A] hover:text-[#D65A40] dark:hover:text-[#D4B152] h-10 w-10 rounded-full border border-[#E76F51] dark:border-[#E9C46A] flex items-center justify-center">
-                                                <i class="fas fa-plus"></i>
+
+                            <!-- Right Column: Details & Actions -->
+                            <div class="space-y-6">
+                                <!-- Description -->
+                                <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl shadow-sm">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                                            <i class="fas fa-info-circle text-white"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Product Details</h3>
+                                    </div>
+                                    <p id="modalPastryDescription" class="text-gray-700 dark:text-gray-300 leading-relaxed"></p>
+                                </div>
+
+                                <!-- Reviews Section -->
+                                <div class="bg-gray-50 dark:bg-gray-900 p-6 rounded-2xl shadow-sm">
+                                    <div class="flex items-center gap-3 mb-6">
+                                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                                            <i class="fas fa-star text-white"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Customer Reviews</h3>
+                                    </div>
+                                    
+                                    <div id="modalPastryReviews" class="space-y-4">
+                                        <!-- Reviews will be dynamically added here -->
+                                    </div>
+                                </div>
+
+                                <!-- Add to Cart Section -->
+                                <div class="bg-primary/10 p-6 rounded-2xl shadow-sm border border-primary/20">
+                                    <div class="flex items-center gap-3 mb-6">
+                                        <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                                            <i class="fas fa-shopping-cart text-white"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-gray-800 dark:text-white">Add to Order</h3>
+                                    </div>
+                                    
+                                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                                        <!-- Quantity Selector -->
+                                        <div class="flex-1">
+                                            <p class="text-gray-600 dark:text-gray-400 mb-3 font-medium">Select Quantity</p>
+                                            <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl p-2 shadow-inner">
+                                                <button id="modalDecreaseQty" class="quantity-btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white h-12 w-12 rounded-lg flex items-center justify-center transition-all duration-300">
+                                                    <i class="fas fa-minus"></i>
+                                                </button>
+                                                <div class="flex-1 text-center px-4">
+                                                    <span id="modalQty" class="text-3xl font-bold text-gray-800 dark:text-white">1</span>
+                                                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Item(s)</p>
+                                                </div>
+                                                <button id="modalIncreaseQty" class="quantity-btn bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white h-12 w-12 rounded-lg flex items-center justify-center transition-all duration-300">
+                                                    <i class="fas fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Price & Add Button -->
+                                        <div class="flex-1 text-center md:text-right">
+                                            <p class="text-gray-600 dark:text-gray-400 mb-2">Total Price</p>
+                                            <p id="modalTotalPrice" class="text-4xl font-bold text-primary mb-4">₦1,200</p>
+                                            <button id="modalAddToCart" class="add-to-cart-btn w-full md:w-auto bg-primary hover:bg-primary-dark text-white font-bold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3">
+                                                <i class="fas fa-shopping-cart"></i>
+                                                Add to Cart
+                                                <span id="modalItemTotal" class="ml-2 font-normal">₦1,200</span>
                                             </button>
                                         </div>
                                     </div>
-                                    <button id="modalAddToCart" class="bg-[#E76F51] dark:bg-[#E9C46A] hover:bg-[#D65A40] dark:hover:bg-[#D4B152] text-white dark:text-[#2D2A22] font-bold py-3 px-8 rounded-lg shadow-md hover:shadow-lg">
-                                        Add to Cart <i class="fas fa-shopping-cart ml-2"></i>
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -662,8 +920,21 @@
             </div>
         </div>
     </div>
-
-    <!-- JavaScript -->
+    <!-- Footer -->
+    <footer class=" text-black py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-center items-center text-center">
+                <div>
+                    <div class="flex items-center space-x-2 justify-center">
+                        <i class="fas fa-birthday-cake text-xl text-black dark:text-[#E9C46A]"></i>
+                        <h3 class="text-xl font-bold">MaryKay's Bakehouse</h3>
+                    </div>
+                    <p class="text-black/70 mt-2">© 2023 MaryKay's Bakehouse. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ========== SCRIPTS ========== -->
     <script src="script.js"></script>
-   </body>
+</body>
 </html>
