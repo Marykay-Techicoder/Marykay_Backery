@@ -47,23 +47,25 @@
                 <!-- Logo -->
                 <div class="flex items-center space-x-2">
                     <i class="fas fa-birthday-cake text-2xl text-primary dark:text-primary"></i>
+                    <h1 class="text-2xl font-bold font-display">MaryKay's Bakehouse</h1>
+                    <i class="fas fa-birthday-cake text-2xl text-primary dark:text-primary"></i>
                     <h1 class="text-2xl font-bold font-display dark: text-primary">MaryKay's Bakehouse</h1>
                 </div>
                 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#home" class="hover:text-primary dark:hover:text-secondary font-medium">Home</a>
-                    <a href="#pastries" class="hover:text-primary dark:hover:text-secondary font-medium">Pastries</a>
-                    <a href="#hours" class="hover:text-primary dark:hover:text-secondary font-medium">Hours</a>
-                    <a href="#order" class="hover:text-primary dark:hover:text-secondary font-medium">Order</a>
-                    <a href="#contact" class="hover:text-primary dark:hover:text-secondary font-medium">Contact</a>
+                    <a href="#home" class="hover:text-primary dark:hover:text-primary font-medium">Home</a>
+                    <a href="#pastries" class="hover:text-primary dark:hover:text-primary font-medium">Pastries</a>
+                    <a href="#hours" class="hover:text-primary dark:hover:text-primary font-medium">Hours</a>
+                    <a href="#order" class="hover:text-primary dark:hover:text-primary font-medium">Order</a>
+                    <a href="#contact" class="hover:text-primary dark:hover:text-primary font-medium">Contact</a>
                 </nav>
                 
                 <!-- Header Actions -->
                 <div class="flex items-center space-x-4">
                     <!-- Cart Icon -->
                     <div class="relative cursor-pointer" id="cartIcon">
-                        <i class="fas fa-shopping-cart text-xl hover:text-primary dark:hover:text-secondary"></i>
+                        <i class="fas fa-shopping-cart text-xl hover:text-primary dark:hover:text-primary"></i>
                         <span id="cartCount" class="absolute -top-2 -right-2 bg-primary dark:bg-secondary text-white dark:text-dark text-xs rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
                     </div>
                     
@@ -75,7 +77,7 @@
             </div>
             
             <!-- Mobile Menu -->
-            <div id="mobileMenu" class="hidden md:hidden mt-4 py-4 border-t border-primary/20 dark:border-secondary/20">
+            <div id="mobileMenu" class="hidden md:hidden mt-4 py-4 border-t border-primary/20 dark:border-primary/20">
                 <div class="flex flex-col space-y-4">
                     <a href="#home" class="hover:text-primary dark:hover:text-secondary font-medium">Home</a>
                     <a href="#pastries" class="hover:text-primary dark:hover:text-secondary font-medium">Pastries</a>
@@ -94,9 +96,9 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <!-- Hero Content -->
                 <div class="animate-fade-in">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6 font-display">Freshly Baked <span class="text-primary dark:text-secondary">Delights</span> Every Day</h2>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 font-display">Freshly Baked <span class="text-primary dark:text-primary">Delights</span> Every Day</h2>
                     <p class="text-lg mb-8 text-gray-600 dark:text-gray-400">Welcome to MaryKay's Bakehouse, where we craft artisanal pastries with love and the finest ingredients. Experience the taste of Lagos in every bite.</p>
-                    <a href="#pastries" class="inline-block bg-primary dark:bg-secondary hover:bg-primary-dark dark:hover:bg-secondary-dark text-white dark:text-dark font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                    <a href="#pastries" class="inline-block bg-primary dark:bg-primary hover:bg-primary-dark dark:hover:bg-secondary-dark text-white dark:text-dark font-semibold py-3 px-8 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
                         Order Now <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
@@ -190,19 +192,19 @@
 
                 <!-- Filter Tabs -->
                 <div class="flex flex-wrap justify-center gap-3 mb-12">
-                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-300 active bg-primary text-white" data-filter="all">
+                    <button class="filter-btn px-5 py-2 rounded-full bg-black dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-100 active bg-primary text-white" data-filter="all">
                         All Pastries
                     </button>
-                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-300" data-filter="breakfast">
+                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-100" data-filter="breakfast">
                         <i class="fas fa-coffee mr-2"></i> Breakfast
                     </button>
-                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-300" data-filter="cakes">
+                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-100" data-filter="cakes">
                         <i class="fas fa-birthday-cake mr-2"></i> Cakes
                     </button>
-                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-300" data-filter="desserts">
+                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-100" data-filter="desserts">
                         <i class="fas fa-ice-cream mr-2"></i> Desserts
                     </button>
-                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-300" data-filter="snacks">
+                    <button class="filter-btn px-5 py-2 rounded-full bg-white dark:white text-foreground hover:bg-primary hover:text-white dark:hover:bg-primary transition-all duration-100" data-filter="snacks">
                         <i class="fas fa-cookie-bite mr-2"></i> Snacks
                     </button>
                 </div>
