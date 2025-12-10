@@ -493,8 +493,8 @@ function makeDotsTouchFriendly() {
     const dots = document.querySelectorAll('.carousel-dot');
     dots.forEach(dot => {
         // Increase touch area on mobile
-        dot.style.minWidth = '40px';
-        dot.style.minHeight = '40px';
+        dot.style.minWidth = '20px';
+        dot.style.minHeight = '20px';
         dot.style.display = 'flex';
         dot.style.alignItems = 'center';
         dot.style.justifyContent = 'center';

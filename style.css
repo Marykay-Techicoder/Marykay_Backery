@@ -349,7 +349,7 @@ h1, h2, h3, h4 {
 @media (max-width: 768px) {
     .carousel-container {
         position: relative;
-        touch-action: pan-y; /* Allow vertical scroll but prevent horizontal */
+        touch-action: pan-y; 
     }
     
     .carousel-slide {
@@ -369,11 +369,11 @@ h1, h2, h3, h4 {
     
     /* Larger touch targets for mobile */
     .carousel-dot {
-        width: 6px !important;
-        height: 6px !important;
-        min-width: 20px !important;
-        min-height: 20px !important;
-        padding: 14px !important;
+        width: 6px ;
+        height: 6px ;
+        min-width: 10px ;
+        min-height: 10px ;
+        padding: 7px;
         position: relative;
     }
     
@@ -398,8 +398,8 @@ h1, h2, h3, h4 {
     
     /* Larger arrow buttons for mobile */
     #prevSlide, #nextSlide {
-        width: 22px !important;
-        height: 22px !important;
+        width: 11px !important;
+        height: 11px !important;
         background-color: rgba(0, 0, 0, 0.5) !important;
         border: 2px solid rgba(255, 255, 255, 0.3);
     }
@@ -424,11 +424,11 @@ h1, h2, h3, h4 {
 }
 
 .carousel-dot:hover {
-    transform: scale(1.1);
+    transform: scale(0.5);
 }
 
 .carousel-dot:active {
-    transform: scale(0.95);
+    transform: scale(0.2);
 }
 
 /* Prevent text selection on carousel */
